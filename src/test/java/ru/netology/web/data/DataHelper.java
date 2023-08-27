@@ -32,8 +32,8 @@ public class DataHelper {
     public static VerificationCode getVerificationCodeFor(AuthInfo authInfo) {
         return new VerificationCode("12345");
     }
-    public static int generateValidAmount (int balance) {
-return new Random().nextInt(balance) + 1;
+    public static int generateValidAmount (int firstCardBalance) {
+return new Random().nextInt(firstCardBalance) + 1;
     }
 
     public static int generateInvalidAmount (int balance) {
@@ -41,13 +41,13 @@ return new Random().nextInt(balance) + 1;
     }
     @Value
     public static class VerificationCode {
-        private String code;
+         String code;
     }
 
     @Value
     public static class CardInfo {
-        private String cardNumber;// геттер getCardNumber прописан благодаря ломбоку
-        private String testID;
+        String cardNumber;// геттер getCardNumber прописан благодаря ломбоку
+         String testID;
 
         public String getTestId() {
             return testID;
@@ -55,8 +55,8 @@ return new Random().nextInt(balance) + 1;
     }
     @Value
     public static class AuthInfo {
-        private String login;
-        private String password;
+         String login;
+         String password;
     }
 }
 
