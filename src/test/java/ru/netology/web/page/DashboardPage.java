@@ -33,8 +33,6 @@ public class DashboardPage {
 
     return new TransferMoneyPage();
   }
-  private final String balanceStart = "баланс: ";// поскольку сама цифра баланса лежит между словом "баланс" и "р.",то обрезаем по бокам эти слова, плюс двоеточие, точку, пробелы...
-  private final String balanceFinish = " р.";
 
   public int getCardBalance(DataHelper.CardInfo cardInfo) {
     var text = cards.findBy(Condition.text(cardInfo.getCardNumber().substring(15))).getText();// по последним 4 цифрам ищем номер нужной карты и брем методом getText всю строку ***0001 баланс 10 000 р. Пополнить
@@ -42,7 +40,10 @@ public class DashboardPage {
 
   }
   private int extractBalance(String text) {
+    // поскольку сама цифра баланса лежит между словом "баланс" и "р.",то обрезаем по бокам эти слова, плюс двоеточие, точку, пробелы...
+    String balanceStart = "баланс: ";
     var start = text.indexOf(balanceStart); // ищем слово, начало которого (буква) лежит в индексе balanceStart
+    String balanceFinish = " р.";
     var finish = text.indexOf(balanceFinish);// ищем слово, начало которого (буква) лежит в индексе balanceFinish
     var value = text.substring(start + balanceStart.length(), finish);// вырезаем текст, который лежит между индексом первойй сущности, всю длину первой сущности, до первого символа конечной сущности, то есть 1000
     return Integer.parseInt(value); //преобоазуем в число
