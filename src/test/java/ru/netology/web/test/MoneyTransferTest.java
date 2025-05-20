@@ -19,7 +19,7 @@ class MoneyTransferTest {
     // выполняем верификацию и переходим в ЛК
 // в результате работы validVerify возвращается новый объект страницы VerificationPage - новый dashboardpage, которы  мы сохраняем в переменную dashboardpage
     @Test
-    void shouldTransferAmountFromFirstToSecondCard(){
+    void shouldTransferAmountFromFirstToSecondCard1(){
         var loginPage = new LoginPage();// после открытия страницы объявляем новую сущность - страницу ввода логина и пароля
         var authInfo = getAuthInfo(); // получаем данные авторизации (логин и пароль) из датахелпера
         var verificationPage = loginPage.validLogin(authInfo);//вставляем данные авторизации
